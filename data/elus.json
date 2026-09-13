@@ -1,0 +1,115 @@
+{
+  "elus": [
+    {
+      "id": "vallaud-boris",
+      "nom": "Boris Vallaud",
+      "prenom": "Boris",
+      "nomFamille": "Vallaud",
+      "chambre": "Assemblée nationale",
+      "mandat": "Député",
+      "circonscription": "Landes — 3e circonscription",
+      "departement": "Landes",
+      "departementCode": "40",
+      "circoNum": 3,
+      "groupe": "Socialistes et apparentés",
+      "groupeCode": "SOC",
+      "nuance": "NFP / PS",
+      "eluLe": "2024-07-07",
+      "sourcesIdentite": [
+        "https://www.assemblee-nationale.fr/dyn/deputes/PA719146",
+        "https://datan.fr/deputes/landes-40/depute_boris-vallaud"
+      ],
+      "professionFoi": {
+        "titre": "Profession de foi, 2e tour, législatives 2024",
+        "date": "2024-06",
+        "url": "https://www2.assemblee-nationale.fr/static/barodet/Barodet-2024/Professions_de_foi_par_d%C3%A9partement/40_Landes_3%20circonscriptions/40-4003-VALLAUD%20Boris_T2.pdf",
+        "extraitLong": "1  Supprimer trois lois injustes : annulation de la réforme des retraites, de la réforme de l’assurance chômage et de la loi immigration ;\n2 Redonner du pouvoir de vivre aux Français : revalorisation des minimas sociaux, des petites retraites et du SMIC, gel des tarifs de l’énergie, allocation d’autonomie pour les jeunes, encadrement des loyers."
+      },
+      "droitReponse": null,
+      "constituLien": "https://www.constitu.fr/candidats"
+    },
+    {
+      "id": "boccaletti-frederic",
+      "nom": "Frédéric Boccaletti",
+      "prenom": "Frédéric",
+      "nomFamille": "Boccaletti",
+      "chambre": "Assemblée nationale",
+      "mandat": "Député",
+      "circonscription": "Var — 7e circonscription",
+      "departement": "Var",
+      "departementCode": "83",
+      "circoNum": 7,
+      "groupe": "Rassemblement National",
+      "groupeCode": "RN",
+      "nuance": "RN",
+      "eluLe": "2024-07-07",
+      "sourcesIdentite": [
+        "https://www.assemblee-nationale.fr/dyn/deputes/PA796042",
+        "https://datan.fr/deputes/var-83/depute_frederic-boccaletti"
+      ],
+      "professionFoi": {
+        "titre": "Profession de foi, 1er tour, législatives 2024",
+        "date": "2024-06",
+        "url": "https://www2.assemblee-nationale.fr/static/barodet/Barodet-2024/Professions_de_foi_par_d%C3%A9partement/83_Var_8%20circonscriptions/83-8307-BOCCALETTI%20Fr%C3%A9d%C3%A9ric_T1.pdf",
+        "extraitLong": "POUR STOPPER LA SUBMERSION MIGRATOIRE — Réduire drastiquement l’immigration légale et illégale et expulser les délinquants étrangers.\nPOUR SOUTENIR NOTRE AGRICULTURE — Développer les circuits courts et lutter contre la concurrence déloyale.\nPOUR RÉALISER DES ÉCONOMIES DE BON SENS — Baisser le coût de l’immigration et lutter contre les grandes fraudes sociales et fiscales.\nPOUR SIMPLIFIER LA VIE DES FRANÇAIS — Stopper la multiplication des normes abusives qui pèsent sur les familles et les entreprises."
+      },
+      "droitReponse": null,
+      "constituLien": "https://www.constitu.fr/candidats"
+    },
+    {
+      "id": "dufour-alma",
+      "nom": "Alma Dufour",
+      "prenom": "Alma",
+      "nomFamille": "Dufour",
+      "chambre": "Assemblée nationale",
+      "mandat": "Députée",
+      "circonscription": "Seine-Maritime — 4e circonscription",
+      "departement": "Seine-Maritime",
+      "departementCode": "76",
+      "circoNum": 4,
+      "groupe": "La France insoumise — Nouveau Front populaire",
+      "groupeCode": "LFI-NFP",
+      "nuance": "NFP / LFI",
+      "eluLe": "2024-07-07",
+      "sourcesIdentite": [
+        "https://www.assemblee-nationale.fr/dyn/deputes/PA793316",
+        "https://datan.fr/deputes/seine-maritime-76/depute_alma-dufour"
+      ],
+      "professionFoi": {
+        "titre": "Profession de foi, 2e tour, législatives 2024 + contrat de législature NFP",
+        "date": "2024-06",
+        "url": "https://www2.assemblee-nationale.fr/static/barodet/Barodet-2024/Professions_de_foi_par_d%C3%A9partement/76_Seine-Maritime_10%20circonscriptions/76-7604-DUFOUR%20Alma_T2.pdf",
+        "extraitLong": "Profession de foi du second tour (Barodet) : texte de barrage au RN, rappel des engagements NFP (retraites, pouvoir d’achat). Contrat de législature NFP (juin 2024) : abrogation de la réforme des retraites et de la loi immigration ; SMIC à 1 600 € net ; planification écologique."
+      },
+      "droitReponse": null,
+      "constituLien": "https://www.constitu.fr/candidats"
+    },
+    {
+      "id": "duplomb-laurent",
+      "nom": "Laurent Duplomb",
+      "prenom": "Laurent",
+      "nomFamille": "Duplomb",
+      "chambre": "Sénat",
+      "mandat": "Sénateur",
+      "circonscription": "Haute-Loire",
+      "departement": "Haute-Loire",
+      "departementCode": "43",
+      "circoNum": null,
+      "groupe": "Les Républicains",
+      "groupeCode": "LR",
+      "nuance": "LR",
+      "eluLe": "2020-09-27",
+      "sourcesIdentite": [
+        "https://www.senat.fr/senateur/duplomb_laurent17253h.html"
+      ],
+      "professionFoi": {
+        "titre": "Ligne publique datée (rapports Sénat 2019-2022 + exposé des motifs de la PPL 2025)",
+        "date": "2025-01",
+        "url": "https://www.senat.fr/senateur/duplomb_laurent17253h.html",
+        "extraitLong": "Le sénateur, agriculteur, documente depuis 2019 une thèse constante : surtransposition des normes, perte de compétitivité, besoin de lever des contraintes d’exercice y compris sur certaines molécules phytosanitaires autorisées ailleurs dans l’UE (acétamipride)."
+      },
+      "droitReponse": null,
+      "constituLien": "https://www.constitu.fr/candidats"
+    }
+  ]
+}
