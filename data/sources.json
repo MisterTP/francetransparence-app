@@ -1,0 +1,58 @@
+{
+  "principe": "On n’agrège pas. On pointe. Une fiche cite un vote déjà publié et un texte de campagne déjà public.",
+  "themes": [
+    {"id": "social", "label": "Social"},
+    {"id": "sante", "label": "Santé"},
+    {"id": "climat", "label": "Climat"},
+    {"id": "energie", "label": "Énergie"},
+    {"id": "budget", "label": "Budget"},
+    {"id": "immigration", "label": "Immigration"},
+    {"id": "securite", "label": "Sécurité"},
+    {"id": "europe", "label": "Europe"},
+    {"id": "agriculture", "label": "Agriculture"},
+    {"id": "institutions", "label": "Institutions"}
+  ],
+  "votes": {
+    "assemblee": {
+      "officiel": "https://www.assemblee-nationale.fr/dyn/17/scrutins",
+      "exemple": "https://www.assemblee-nationale.fr/dyn/17/scrutins/519",
+      "positionsIndividuelles": "https://www.assemblee-nationale.fr/dyn/deputes/{id}/positions-de-vote",
+      "opendataAmont": "data.assemblee-nationale.fr / dumps XML-JSON de la XVIIe",
+      "miroirs": [
+        {"nom": "Datan", "url": "https://datan.fr/", "usage": "vote individuel décrypté, pas source juridique"},
+        {"nom": "NosParlementaires", "url": "https://www.data.gouv.fr/datasets/votes-et-activite-des-parlementaires-francais-17e-legislature-nosparlementaires", "usage": "CSV/JSON quotidien, 8434 scrutins AN, 1,2 M votes"},
+        {"nom": "CLAIR.vote", "url": "https://clair.vote/api", "usage": "API miroir, optionnelle"}
+      ]
+    },
+    "senat": {
+      "officiel": "https://www.senat.fr/",
+      "opendata": "data.senat.fr",
+      "miroir": "https://www.data.gouv.fr/datasets/votes-et-activite-des-parlementaires-francais-17e-legislature-nosparlementaires"
+    },
+    "parlementEuropeen": {
+      "officielRCV": "XML roll-call du PE (doceo) : PV-10-AAAA-MM-JJ-RCV",
+      "howTheyVote": "https://howtheyvote.eu/",
+      "exportCSV": "https://github.com/HowTheyVote/data/releases/latest",
+      "api": "https://howtheyvote.eu/developers",
+      "limite": "Uniquement les votes nominatifs (roll-call). Pas les votes à main levée. Manifeste = profession de liste 2024, pas une profession de circo."
+    }
+  },
+  "programmes": {
+    "legislatives2024": {
+      "barodet": "https://www.assemblee-nationale.fr/dyn/histoire/barodet/17",
+      "pdfPattern": "https://www2.assemblee-nationale.fr/static/barodet/Barodet-2024/Professions_de_foi_par_département/…",
+      "programmesListe": ["contrat NFP juin 2024", "ensemble-2024.fr/notre-projet", "circulaires RN / LR de juin 2024"]
+    },
+    "europeennes2024": {
+      "officielCampagne": "https://programme-candidats.interieur.gouv.fr/",
+      "archive": "https://web.archive.org/web/20240528034840/https://programme-candidats.interieur.gouv.fr/",
+      "annonceInterieur": "https://www.interieur.gouv.fr/actualites/actualites-du-ministere/europeennes-2024-professions-de-foi-sont-en-ligne",
+      "limite": "Site campagne parfois hors ligne hors période électorale : garder copie PDF + archive.org."
+    }
+  },
+  "pasFaire": [
+    "Refaire l’agrégateur AN/PE",
+    "Scorer un thème",
+    "Importer 577 × 8000 lectures automatiques"
+  ]
+}
