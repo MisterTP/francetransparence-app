@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sources — France Transparence.app</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="banner">
+    <div class="wrap">
+      <strong>Démo</strong>
+      <span>On n’agrège pas les votes : on pointe vers qui le fait déjà.</span>
+    </div>
+  </div>
+  <header class="site">
+    <div class="wrap">
+      <div class="brand">
+        <h1><a href="index.html">France Transparence.app</a></h1>
+        <p class="tag">Un vote dans la machine, recollé au tract.</p>
+      </div>
+      <nav class="site">
+        <a href="index.html">Fiches</a>
+        <a href="methode.html">Méthode</a>
+        <a href="sources.html" aria-current="page">Sources</a>
+        <a href="reponse.html">Droit de réponse</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="wrap">
+      <h1 class="page">Sources</h1>
+      <p class="lede">Oui : les tuyaux existent pour l’Assemblée, le Sénat et le Parlement européen. Non : on ne reconstruit pas l’agrégateur. Registre machine : <code>data/sources.json</code>.</p>
+
+      <div class="block">
+        <h2>Votes — Assemblée nationale</h2>
+        <ul>
+          <li>Source juridique : <a href="https://www.assemblee-nationale.fr/dyn/17/scrutins">scrutins publics XVIIe</a> (ex. <a href="https://www.assemblee-nationale.fr/dyn/17/scrutins/519">n° 519</a>, censure Barnier).</li>
+          <li>Vote nommé : page « positions de vote » de chaque député (ex. <a href="https://www.assemblee-nationale.fr/dyn/deputes/PA795200/positions-de-vote">Alma Dufour</a>).</li>
+          <li>Miroir quotidien : <a href="https://www.data.gouv.fr/datasets/votes-et-activite-des-parlementaires-francais-17e-legislature-nosparlementaires">NosParlementaires sur data.gouv</a> — 8 434 scrutins, ~1,25 M votes individuels, CSV/JSON.</li>
+          <li>Légende humaine : <a href="https://datan.fr/">Datan</a> (décryptage, pas acte officiel).</li>
+        </ul>
+      </div>
+      <div class="block">
+        <h2>Votes — Sénat</h2>
+        <ul>
+          <li>Fiches et dossiers : <a href="https://www.senat.fr/">senat.fr</a> + open data data.senat.fr.</li>
+          <li>Même dump NosParlementaires (onglet Sénat, 909 scrutins).</li>
+        </ul>
+      </div>
+      <div class="block">
+        <h2>Votes — Parlement européen</h2>
+        <ul>
+          <li>Acte : XML roll-call du PE (doceo), votes nominatifs seulement.</li>
+          <li>Miroir exploitable : <a href="https://howtheyvote.eu/">HowTheyVote.eu</a> — export <a href="https://github.com/HowTheyVote/data/releases/latest">CSV members / votes / member_votes</a>, API <a href="https://howtheyvote.eu/developers">developers</a>.</li>
+          <li>Limite : pas les votes à main levée. Un député européen se compare à la profession de <em>liste</em> 2024, pas à une circo législative.</li>
+        </ul>
+      </div>
+      <div class="block">
+        <h2>Programmes et professions de foi</h2>
+        <ul>
+          <li>Législatives 2024 : <a href="https://www.assemblee-nationale.fr/dyn/histoire/barodet/17">Barodet XVIIe</a> (PDF par département). Démo :
+            <a href="https://www2.assemblee-nationale.fr/static/barodet/Barodet-2024/Professions_de_foi_par_d%C3%A9partement/40_Landes_3%20circonscriptions/40-4003-VALLAUD%20Boris_T2.pdf">Vallaud T2</a>,
+            <a href="https://www2.assemblee-nationale.fr/static/barodet/Barodet-2024/Professions_de_foi_par_d%C3%A9partement/83_Var_8%20circonscriptions/83-8307-BOCCALETTI%20Fr%C3%A9d%C3%A9ric_T1.pdf">Boccaletti T1</a>,
+            <a href="https://www2.assemblee-nationale.fr/static/barodet/Barodet-2024/Professions_de_foi_par_d%C3%A9partement/76_Seine-Maritime_10%20circonscriptions/76-7604-DUFOUR%20Alma_T2.pdf">Dufour T2</a>.</li>
+          <li>Programmes de liste (quand le recto-verso est trop court) : contrat NFP juin 2024, <a href="https://ensemble-2024.fr/notre-projet">Ensemble 2024</a>, circulaires RN/LR. La fiche doit le dire.</li>
+          <li>Européennes 2024 : <a href="https://programme-candidats.interieur.gouv.fr/">programme-candidats.interieur.gouv.fr</a> (souvent hors ligne hors campagne) + <a href="https://web.archive.org/web/20240528034840/https://programme-candidats.interieur.gouv.fr/">archive.org</a>.</li>
+        </ul>
+      </div>
+      <div class="block">
+        <h2>Dix thèmes</h2>
+        <p>Social · Santé · Climat · Énergie · Budget · Immigration · Sécurité · Europe · Agriculture · Institutions. Casiers, pas score. Liste figée dans <code>data/sources.json</code>.</p>
+      </div>
+      <div class="block">
+        <h2>Ce que nous ne sommes pas</h2>
+        <ul>
+          <li><a href="https://www.constitu.fr/">constitu.fr</a> — règles de la Ve, pas le fond des votes.</li>
+          <li>francetransparence.fr — argent public (autre domaine).</li>
+          <li>leurs-votes.fr — grille militante.</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <span>Données officielles + lecture sourcée.</span>
+      <a href="methode.html">Lire la méthode</a>
+    </div>
+  </footer>
+</body>
+</html>
