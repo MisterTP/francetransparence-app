@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>France Transparence — un vote recollé au tract</title>
+  <meta name="description" content="Lire un scrutin de l’Assemblée ou du Sénat à côté d’une promesse datée. Pas un score.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div class="banner">
+    <div class="wrap">
+      <strong>Démo</strong>
+      <span id="banner-count">10 fiches</span>
+      <span>— Ceci n’est pas un score. Aucun /100, aucun classement, aucune couleur morale.</span>
+    </div>
+  </div>
+  <header class="site">
+    <div class="wrap">
+      <div class="brand">
+        <h1><a href="index.html">France Transparence.app</a></h1>
+        <p class="tag">Un vote dans la machine, recollé au tract.</p>
+      </div>
+      <nav class="site">
+        <a href="index.html" aria-current="page">Fiches</a>
+        <a href="methode.html">Méthode</a>
+        <a href="sources.html">Sources</a>
+        <a href="reponse.html">Droit de réponse</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="wrap">
+      <h1 class="page">Promesse datée, scrutin public.</h1>
+      <p class="lede">Chaque fiche pose un élu, un extrait de profession de foi ou de programme, un vote, et un statut relationnel : aligné, opposé ou incomparable. Rien d’autre.</p>
+      <div class="phrase">
+        Constitu’ explique la machine.<br>
+        <em>France Transparence.app explique un vote dans la machine, recollé au tract.</em>
+      </div>
+      <div class="search">
+        <label for="q">Recherche circonscription, département, élu, thème</label>
+        <input id="q" type="search" placeholder="ex. Landes, Var 7, Vallaud, immigration">
+        <p class="hint small">Démo : Landes 3e, Var 7e, Seine-Maritime 4e, Haute-Loire (Sénat). Pas 577 fiches.</p>
+      </div>
+      <div class="filters" id="filters"></div>
+      <div class="grid" id="liste"></div>
+    </div>
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <span>Site statique · data/fiches.json · hébergement Pages</span>
+      <span>Cadre institutionnel : <a href="https://www.constitu.fr/">Constitu’</a> · pas francetransparence.fr · pas leurs-votes.fr</span>
+    </div>
+  </footer>
+  <script src="js/app.js"></script>
+  <script>
+    const THEMES = ["Tous", "Social", "Santé", "Climat", "Énergie", "Budget", "Immigration", "Sécurité", "Europe", "Agriculture", "Institutions"];
+    let DATA = null;
+    let theme = "Tous";
+
+    function render() {
+      const q = FT.normalize(document.getElementById("q").value);
+      const box = document.getElementById("liste");
+      const rows = DATA.fiches.filter((f) => {
+        const elu = FT.eluById(DATA.elus, f.eluId);
+        if (theme !== "Tous" && f.theme !== theme) return false;
+        return FT.matchQuery(q, f, elu);
+      });
+      if (!rows.length) {
+        box.innerHTML = "<p class='empty'>Aucune fiche pour cette recherche — le corpus est volontairement court.</p>";
+        return;
+      }
+      box.innerHTML = rows.map((f) => FT.cardHTML(f, FT.eluById(DATA.elus, f.eluId))).join("");
+    }
+
+    function renderFilters() {
+      const el = document.getElementById("filters");
+      el.innerHTML = THEMES.map((t) =>
+        `<button type="button" data-theme="${t}" aria-pressed="${t === theme}">${t}</button>`
+      ).join("");
+      el.querySelectorAll("button").forEach((b) => {
+        b.addEventListener("click", () => { theme = b.dataset.theme; renderFilters(); render(); });
+      });
+    }
+
+    FT.loadData().then((d) => {
+      DATA = d;
+      document.getElementById("banner-count").textContent = d.meta.nbFiches + " fiches";
+      renderFilters();
+      render();
+    }).catch(() => {
+      document.getElementById("liste").innerHTML = "<p class='empty'>Impossible de charger data/fiches.json.</p>";
+    });
+    document.getElementById("q").addEventListener("input", render);
+  </script>
+</body>
+</html>
