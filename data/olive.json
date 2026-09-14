@@ -1,0 +1,54 @@
+{
+  "fiches": [
+    {
+      "id": "olive-excuse-minorite-2025",
+      "eluId": "olive-karl",
+      "theme": "Sécurité",
+      "chambre": "Assemblée nationale",
+      "scrutin": {
+        "intitule": "Proposition de loi visant à restaurer l’autorité de la justice à l’égard des mineurs délinquants et de leurs parents",
+        "date": "2025-02-13",
+        "type": "Première lecture — scrutin public n° 805",
+        "resultat": "Adoptée (125 pour / 58 contre)",
+        "lienOfficiel": "https://www.assemblee-nationale.fr/dyn/17/scrutins/805",
+        "lienDatan": "https://datan.fr/deputes/yvelines-78/depute_karl-olive/votes"
+      },
+      "ceQueLeTexteFait": "Texte Attal en première lecture : restriction de l’excuse de minorité pour certains mineurs de 16 ans et plus (faits graves, multirécidive), comparution immédiate dans des cas graves, durcissement des sanctions envers les parents. Ce n’est pas la suppression générale de l’excuse de minorité, ni le rétablissement des peines planchers de 2007.",
+      "voteElu": "pour",
+      "extraitPromesse": {
+        "texte": "« Améliorer la sécurité du quotidien, pilier essentiel du vivre ensemble. » « nous supprimerons l’excuse de minorité pour que chaque délit soit réellement puni et rétablirons les peines planchers »",
+        "source": "Profession de foi, 2e tour, Yvelines 12e, 2024 (Barodet AN).",
+        "date": "2024-06",
+        "url": "https://www2.assemblee-nationale.fr/static/barodet/Barodet-2024/Professions_de_foi_par_d%C3%A9partement/78_Yvelines_%2012%20circonscriptions/78-7812-OLIVE%20Karl_T2.pdf"
+      },
+      "statut": "aligne",
+      "limite": "Le tract promet de « supprimer » l’excuse et de rétablir les peines planchers. Le scrutin restreint l’excuse pour une catégorie de mineurs. Même direction, objet plus étroit. Vote POUR (Datan ; scrutin n° 805).",
+      "droitReponse": null
+    },
+    {
+      "id": "olive-duplomb-2025",
+      "eluId": "olive-karl",
+      "theme": "Agriculture",
+      "chambre": "Assemblée nationale",
+      "scrutin": {
+        "intitule": "Loi Duplomb — lever les contraintes à l’exercice du métier d’agriculteur (texte CMP)",
+        "date": "2025-07-08",
+        "type": "Lecture définitive Assemblée (CMP) — Datan vote n° 2957",
+        "resultat": "Adopté (316 pour / 223 contre)",
+        "lienOfficiel": "https://datan.fr/votes/legislature-17/vote_2957",
+        "lienDatan": "https://datan.fr/deputes/yvelines-78/depute_karl-olive/votes"
+      },
+      "ceQueLeTexteFait": "Dérogation acétamipride, assouplissement de normes d’élevage et d’irrigation, règles de conseil/vente des phytosanitaires. Ce n’est pas un vote climat ou nucléaire.",
+      "voteElu": "pour",
+      "extraitPromesse": {
+        "texte": "Le T2 Barodet porte sur la sécurité du quotidien et le cadre de vie local (Paris–Normandie, Grignon). Pas d’engagement agriculture, pesticides ou climat.",
+        "source": "Profession de foi T2 Yvelines 12e, 2024. Vote POUR le 8 juillet 2025 (Datan ; presse Yvelines).",
+        "date": "2024-06",
+        "url": "https://www2.assemblee-nationale.fr/static/barodet/Barodet-2024/Professions_de_foi_par_d%C3%A9partement/78_Yvelines_%2012%20circonscriptions/78-7812-OLIVE%20Karl_T2.pdf"
+      },
+      "statut": "incomparable",
+      "limite": "Vote réel, promesse absente sur cet objet. On n’en fait pas un « opposé » climatique : le tract n’a pas de phrase pesticides ou CO2 à comparer.",
+      "droitReponse": null
+    }
+  ]
+}

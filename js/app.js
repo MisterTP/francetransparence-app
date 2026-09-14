@@ -1,11 +1,23 @@
 async function loadData() {
-  const [fichesRes, elusRes] = await Promise.all([
+  const [fichesRes, elusRes, extraRes] = await Promise.all([
     fetch("data/fiches.json"),
-    fetch("data/elus.json")
+    fetch("data/elus.json"),
+    fetch("data/olive.json")
   ]);
-  const fichesJson = await fichesRes.json();
-  const elusJson = await elusRes.json();
-  return { meta: fichesJson.meta, fiches: fichesJson.fiches, elus: elusJson.elus };
+  let fichesJson = await fichesRes.json();
+  if (!fichesJson.fiches || fichesJson.fiches.length === 0) {
+    const fb = await fetch("https://raw.githubusercontent.com/MisterTP/francetransparence-app/d36eded0873e4b34bb24446589f770a80af8fd8b/data/fiches.json");
+    fichesJson = await fb.json();
+  }
+  const extraJson = extraRes.ok ? await extraRes.json() : { fiches: [] };
+  const extraIds = new Set((extraJson.fiches || []).map((f) => f.id));
+  const base = (fichesJson.fiches || []).filter((f) => !extraIds.has(f.id));
+  const fiches = base.concat(extraJson.fiches || []);
+  return {
+    meta: { ...fichesJson.meta, nbFiches: fiches.length, version: "0.3-demo" },
+    fiches,
+    elus: (await elusRes.json()).elus
+  };
 }
 
 function eluById(elus, id) {
