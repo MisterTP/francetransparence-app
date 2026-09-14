@@ -110,6 +110,34 @@
       },
       "droitReponse": null,
       "constituLien": "https://www.constitu.fr/candidats"
+    },
+    {
+      "id": "olive-karl",
+      "nom": "Karl Olive",
+      "prenom": "Karl",
+      "nomFamille": "Olive",
+      "chambre": "Assemblée nationale",
+      "mandat": "Député",
+      "circonscription": "Yvelines — 12e circonscription",
+      "departement": "Yvelines",
+      "departementCode": "78",
+      "circoNum": 12,
+      "groupe": "Ensemble pour la République",
+      "groupeCode": "EPR",
+      "nuance": "Ensemble / EPR",
+      "eluLe": "2024-07-07",
+      "sourcesIdentite": [
+        "https://www.assemblee-nationale.fr/dyn/deputes/PA795722",
+        "https://datan.fr/deputes/yvelines-78/depute_karl-olive"
+      ],
+      "professionFoi": {
+        "titre": "Profession de foi, 2e tour, législatives 2024",
+        "date": "2024-06",
+        "url": "https://www2.assemblee-nationale.fr/static/barodet/Barodet-2024/Professions_de_foi_par_d%C3%A9partement/78_Yvelines_%2012%20circonscriptions/78-7812-OLIVE%20Karl_T2.pdf",
+        "extraitLong": "Améliorer la sécurité du quotidien, pilier essentiel du vivre ensemble. Poursuivre la lutte contre les incivilités du quotidien comme les rodéos urbains, supprimer l’excuse de minorité pour que chaque délit soit réellement puni et rétablir les peines planchers. Défense du territoire : préserver le patrimoine et le cadre de vie (tracé de la voie Paris–Normandie, domaine de Grignon)."
+      },
+      "droitReponse": null,
+      "constituLien": "https://www.constitu.fr/candidats"
     }
   ]
 }
