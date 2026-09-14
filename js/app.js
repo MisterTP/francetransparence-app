@@ -1,8 +1,8 @@
 async function loadData() {
   const [fichesRes, elusRes, extraRes] = await Promise.all([
-    fetch("data/fiches.json"),
-    fetch("data/elus.json"),
-    fetch("data/olive.json")
+    fetch("data/fiches.json?v=20260914c"),
+    fetch("data/elus.json?v=20260914c"),
+    fetch("data/olive.json?v=20260914c")
   ]);
   let fichesJson = await fichesRes.json();
   if (!fichesJson.fiches || fichesJson.fiches.length === 0) {
@@ -13,10 +13,11 @@ async function loadData() {
   const extraIds = new Set((extraJson.fiches || []).map((f) => f.id));
   const base = (fichesJson.fiches || []).filter((f) => !extraIds.has(f.id));
   const fiches = base.concat(extraJson.fiches || []);
+  const elusJson = await elusRes.json();
   return {
     meta: { ...fichesJson.meta, nbFiches: fiches.length, version: "0.3-demo" },
     fiches,
-    elus: (await elusRes.json()).elus
+    elus: elusJson.elus
   };
 }
 
