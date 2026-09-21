@@ -1,8 +1,8 @@
 async function loadData() {
   const [fichesRes, elusRes, extraRes] = await Promise.all([
-    fetch("data/fiches.json?v=20260914c"),
-    fetch("data/elus.json?v=20260914c"),
-    fetch("data/olive.json?v=20260914c")
+    fetch("data/fiches.json?v=20260921a"),
+    fetch("data/elus.json?v=20260921a"),
+    fetch("data/olive.json?v=20260921a")
   ]);
   let fichesJson = await fichesRes.json();
   if (!fichesJson.fiches || fichesJson.fiches.length === 0) {

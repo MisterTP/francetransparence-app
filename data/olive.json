@@ -49,6 +49,31 @@
       "statut": "incomparable",
       "limite": "Vote réel, promesse absente sur cet objet. On n’en fait pas un « opposé » climatique : le tract n’a pas de phrase pesticides ou CO2 à comparer.",
       "droitReponse": null
+    },
+    {
+      "id": "dufour-hydroelectricite-2026",
+      "eluId": "dufour-alma",
+      "theme": "Énergie",
+      "chambre": "Assemblée nationale",
+      "scrutin": {
+        "intitule": "Proposition de loi visant à relancer les investissements dans le secteur de l’hydroélectricité pour contribuer à la transition énergétique (texte CMP)",
+        "date": "2026-06-17",
+        "type": "Lecture définitive — Datan vote n° 7409",
+        "resultat": "Adoptée (290 pour / 59 contre / 116 abstentions)",
+        "lienOfficiel": "https://www.assemblee-nationale.fr/dyn/17/dossiers/relancer_investissements_secteur_hydroelectricite_contribuer_transition_energetique_17e",
+        "lienDatan": "https://datan.fr/votes/legislature-17/vote_7409"
+      },
+      "ceQueLeTexteFait": "Change le régime de la grande hydroélectricité (> 4,5 MW) : fin des concessions, autorisations de 70 ans, propriété publique des ouvrages conservée. Ouvre environ 40 % des volumes à d’autres opérateurs qu’EDF, via des enchères. Ce n’est pas un vote pour ou contre l’existence des barrages.",
+      "voteElu": "contre",
+      "extraitPromesse": {
+        "texte": "Contrat de législature NFP, juin 2024 : planification écologique et « renforcement de la structuration de filières françaises et européennes de production d’énergies renouvelables ». La profession de foi T2 est un texte de barrage ; l’énergie y passe par le mandat de liste.",
+        "source": "Contrat NFP juin 2024 + profession de foi T2 Barodet, Seine-Maritime 4e. Groupe LFI-NFP : 59 contre, 0 pour (scrutin du 17 juin 2026).",
+        "date": "2024-06",
+        "url": "https://www2.assemblee-nationale.fr/static/barodet/Barodet-2024/Professions_de_foi_par_d%C3%A9partement/76_Seine-Maritime_10%20circonscriptions/76-7604-DUFOUR%20Alma_T2.pdf"
+      },
+      "statut": "oppose",
+      "limite": "L’hydroélectricité est la première renouvelable électrique française : voter contre un texte intitulé « transition énergétique » s’écarte de la phrase renouvelables du contrat de liste. Limite forte : LFI vise l’ouverture de 40 % des volumes à des tiers, pas l’investissement dans les barrages. Un lecteur qui ne compare que ce grief classerait la fiche en incomparable.",
+      "droitReponse": null
     }
   ]
 }

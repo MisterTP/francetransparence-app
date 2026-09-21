@@ -53,12 +53,11 @@
       <span>Cadre institutionnel : <a href="https://www.constitu.fr/">Constitu’</a> · pas francetransparence.fr · pas leurs-votes.fr</span>
     </div>
   </footer>
-  <script src="js/app.js?v=20260914c"></script>
+  <script src="js/app.js?v=20260921a"></script>
   <script>
     const THEMES = ["Tous", "Social", "Santé", "Climat", "Énergie", "Budget", "Immigration", "Sécurité", "Europe", "Agriculture", "Institutions"];
     let DATA = null;
     let theme = "Tous";
-
     function render() {
       const q = FT.normalize(document.getElementById("q").value);
       const box = document.getElementById("liste");
@@ -73,7 +72,6 @@
       }
       box.innerHTML = rows.map((f) => FT.cardHTML(f, FT.eluById(DATA.elus, f.eluId))).join("");
     }
-
     function renderFilters() {
       const el = document.getElementById("filters");
       el.innerHTML = THEMES.map((t) =>
@@ -83,7 +81,6 @@
         b.addEventListener("click", () => { theme = b.dataset.theme; renderFilters(); render(); });
       });
     }
-
     FT.loadData().then((d) => {
       DATA = d;
       document.getElementById("banner-count").textContent = d.meta.nbFiches + " fiches";
