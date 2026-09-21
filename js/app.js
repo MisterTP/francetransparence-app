@@ -1,19 +1,21 @@
 async function loadData() {
-  const v = "20260921b";
-  const [b1Res, b2Res, elusRes] = await Promise.all([
+  const v = "20260921c";
+  const [b1Res, b2Res, b3Res, elusRes] = await Promise.all([
     fetch("data/batch-1.json?v=" + v),
     fetch("data/batch-2.json?v=" + v),
+    fetch("data/batch-3.json?v=" + v),
     fetch("data/elus.json?v=" + v)
   ]);
-  if (!b1Res.ok || !b2Res.ok || !elusRes.ok) {
+  if (!b1Res.ok || !b2Res.ok || !b3Res.ok || !elusRes.ok) {
     throw new Error("données");
   }
   const b1 = await b1Res.json();
   const b2 = await b2Res.json();
+  const b3 = await b3Res.json();
   const elusJson = await elusRes.json();
   const seen = new Set();
   const fiches = [];
-  for (const f of [...(b1.fiches || []), ...(b2.fiches || [])]) {
+  for (const f of [...(b1.fiches || []), ...(b2.fiches || []), ...(b3.fiches || [])]) {
     if (!f.id || seen.has(f.id)) continue;
     seen.add(f.id);
     fiches.push(f);
