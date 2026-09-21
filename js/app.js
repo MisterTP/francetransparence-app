@@ -1,5 +1,5 @@
 async function loadData() {
-  const v = "20260921c";
+  const v = "20260921d";
   const [b1Res, b2Res, b3Res, elusRes] = await Promise.all([
     fetch("data/batch-1.json?v=" + v),
     fetch("data/batch-2.json?v=" + v),
