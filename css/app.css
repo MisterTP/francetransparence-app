@@ -11,198 +11,80 @@
   --rule: #2b271f;
   font-family: "Source Serif 4", "Iowan Old Style", Palatino, Georgia, serif;
 }
-
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; background: var(--paper); color: var(--ink); }
 body {
-  min-height: 100vh;
-  line-height: 1.55;
-  font-size: 18px;
+  min-height: 100vh; line-height: 1.55; font-size: 18px;
   background-image:
     radial-gradient(ellipse at top, rgba(255,255,255,.45), transparent 42%),
     repeating-linear-gradient(0deg, transparent, transparent 47px, rgba(43,39,31,.03) 48px);
 }
-
 a { color: var(--accent); text-underline-offset: 3px; }
 a:hover { text-decoration-thickness: 2px; }
-
 .wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
-
+.stick {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--paper);
+  box-shadow: 0 1px 0 rgba(43,39,31,.12);
+}
 .banner {
-  background: var(--warn-bg);
-  color: var(--warn);
+  background: var(--warn-bg); color: var(--warn);
   border-bottom: 1px solid #ddcfa8;
   font-family: "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
 }
 .banner .wrap { padding: 9px 22px; display: flex; gap: 12px; flex-wrap: wrap; align-items: baseline; }
 .banner strong { font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; font-size: 11px; }
-
-header.site {
-  padding: 26px 0 20px;
-  border-bottom: 3px double var(--rule);
-}
-header.site .brand {
-  display: flex; justify-content: space-between; gap: 16px; align-items: flex-end; flex-wrap: wrap;
-}
-header.site h1 {
-  font-size: 26px; font-weight: 600; margin: 0; letter-spacing: -0.03em;
-}
+header.site { padding: 12px 0 10px; border-bottom: 3px double var(--rule); }
+header.site .brand { display: flex; justify-content: space-between; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
+header.site h1 { font-size: 26px; font-weight: 600; margin: 0; letter-spacing: -0.03em; }
 header.site h1 a { color: inherit; text-decoration: none; }
-header.site .tag {
-  font-family: "Source Sans 3", sans-serif;
-  font-size: 13px; color: var(--muted); max-width: 460px; margin: 0;
-}
-nav.site {
-  font-family: "Source Sans 3", sans-serif;
-  font-size: 14px;
-  margin-top: 16px;
-  display: flex; gap: 20px; flex-wrap: wrap;
-}
+header.site .tag { font-family: "Source Sans 3", sans-serif; font-size: 13px; color: var(--muted); max-width: 460px; margin: 0; }
+nav.site { font-family: "Source Sans 3", sans-serif; font-size: 14px; margin-top: 12px; display: flex; gap: 20px; flex-wrap: wrap; }
 nav.site a { color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; padding-bottom: 2px; }
 nav.site a:hover, nav.site a[aria-current="page"] { border-bottom-color: var(--ink); }
-
 main { padding: 40px 0 72px; }
-
 h1.page { font-size: clamp(30px, 5vw, 44px); line-height: 1.12; font-weight: 600; margin: 0 0 14px; letter-spacing: -0.035em; }
 .lede { font-size: 20px; color: #332f28; max-width: 38em; margin: 0 0 8px; }
 .small { font-family: "Source Sans 3", sans-serif; font-size: 14px; color: var(--muted); }
-
-.phrase {
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 16px 0;
-  margin: 28px 0 8px;
-  font-size: 19px;
-}
+.phrase { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 16px 0; margin: 28px 0 8px; font-size: 19px; }
 .phrase em { font-style: italic; }
-
-.search {
-  background: var(--card);
-  border: 1px solid var(--line);
-  padding: 16px 18px;
-  margin: 24px 0 16px;
-  box-shadow: 0 1px 0 rgba(43,39,31,.04);
-}
+.search { background: var(--card); border: 1px solid var(--line); padding: 16px 18px; margin: 24px 0 16px; }
 .search label { display: block; font-family: "Source Sans 3", sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
-.search input {
-  width: 100%; font: inherit; font-size: 18px; padding: 10px 12px;
-  border: 1px solid var(--line); background: #fff; color: var(--ink);
-}
+.search input { width: 100%; font: inherit; font-size: 18px; padding: 10px 12px; border: 1px solid var(--line); background: #fff; color: var(--ink); }
 .search .hint { margin-top: 8px; }
-
-.filters {
-  display: flex; gap: 6px; flex-wrap: wrap; margin: 0 0 22px;
-  font-family: "Source Sans 3", sans-serif; font-size: 13px;
-}
-.filters button {
-  background: transparent; border: 1px solid var(--line); color: var(--ink);
-  padding: 6px 11px; cursor: pointer; font: inherit; border-radius: 999px;
-}
+.filters { display: flex; gap: 6px; flex-wrap: wrap; margin: 0 0 22px; font-family: "Source Sans 3", sans-serif; font-size: 13px; }
+.filters button { background: transparent; border: 1px solid var(--line); color: var(--ink); padding: 6px 11px; cursor: pointer; font: inherit; border-radius: 999px; }
 .filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-
-.grid {
-  display: grid;
-  gap: 16px;
-  grid-template-columns: 1fr;
-}
-@media (min-width: 760px) {
-  .grid { grid-template-columns: 1fr 1fr; }
-}
-
-.card {
-  background: var(--card);
-  border: 1px solid var(--line);
-  text-decoration: none;
-  color: inherit;
-  display: grid;
-  grid-template-columns: 92px 1fr;
-  min-height: 168px;
-  box-shadow: 0 1px 0 rgba(43,39,31,.05);
-  transition: border-color .15s, transform .15s;
-}
+.grid { display: grid; gap: 16px; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .grid { grid-template-columns: 1fr 1fr; } }
+.card { background: var(--card); border: 1px solid var(--line); text-decoration: none; color: inherit; display: grid; grid-template-columns: 92px 1fr; min-height: 168px; transition: border-color .15s, transform .15s; }
 a.card:hover { border-color: var(--ink); transform: translateY(-1px); }
-.card .rail {
-  background: #efe9db;
-  border-right: 1px solid var(--line);
-  padding: 14px 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 10px;
-}
-.card .rail .vote-word {
-  font-family: "Source Sans 3", sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.card .rail .vote-val {
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-}
+.card .rail { background: #efe9db; border-right: 1px solid var(--line); padding: 14px 10px; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; }
+.card .rail .vote-word { font-family: "Source Sans 3", sans-serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.card .rail .vote-val { font-size: 20px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
 .card .body { padding: 14px 16px 16px; }
-.card .meta {
-  font-family: "Source Sans 3", sans-serif;
-  font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted);
-  display: flex; gap: 8px; flex-wrap: wrap; align-items: center;
-}
+.card .meta { font-family: "Source Sans 3", sans-serif; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); display: flex; gap: 8px; flex-wrap: wrap; }
 .card h2 { font-size: 19px; margin: 8px 0 8px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.25; }
 .card p { margin: 0; color: #3a372f; font-size: 15px; }
-
-.statut {
-  font-family: "Source Sans 3", sans-serif;
-  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
-  border: 1px solid currentColor; padding: 2px 7px; display: inline-block;
-}
+.statut { font-family: "Source Sans 3", sans-serif; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid currentColor; padding: 2px 7px; display: inline-block; }
 .statut.aligne { color: var(--accent); }
 .statut.oppose { color: #5a2a2a; }
 .statut.incomparable { color: #4a4a4a; }
-
 article.fiche header { margin-bottom: 24px; }
-.block {
-  background: var(--card);
-  border: 1px solid var(--line);
-  padding: 18px 20px;
-  margin: 0 0 14px;
-}
-.block h2 {
-  font-family: "Source Sans 3", sans-serif;
-  font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
-  margin: 0 0 10px; color: var(--muted); font-weight: 700;
-}
+.block { background: var(--card); border: 1px solid var(--line); padding: 18px 20px; margin: 0 0 14px; }
+.block h2 { font-family: "Source Sans 3", sans-serif; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; margin: 0 0 10px; color: var(--muted); font-weight: 700; }
 .block blockquote { margin: 0; font-size: 18px; border: 0; padding: 0; }
 .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-@media (max-width: 720px) {
-  .cols { grid-template-columns: 1fr; }
-  .card { grid-template-columns: 78px 1fr; }
-}
-
+@media (max-width: 720px) { .cols { grid-template-columns: 1fr; } .card { grid-template-columns: 78px 1fr; } }
 .limite { background: #ebe6d8; }
-
-footer.site {
-  border-top: 3px double var(--rule);
-  padding: 24px 0 48px;
-  font-family: "Source Sans 3", sans-serif;
-  font-size: 14px; color: var(--muted);
-}
+footer.site { border-top: 3px double var(--rule); padding: 24px 0 48px; font-family: "Source Sans 3", sans-serif; font-size: 14px; color: var(--muted); }
 footer.site .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-
 .methode ol { padding-left: 20px; }
 .methode li { margin-bottom: 10px; }
-table.codebook {
-  width: 100%; border-collapse: collapse; font-size: 16px; background: var(--card);
-}
-table.codebook th, table.codebook td {
-  border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top;
-}
-table.codebook th {
-  font-family: "Source Sans 3", sans-serif; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase;
-  background: #efebe1;
-}
+table.codebook { width: 100%; border-collapse: collapse; font-size: 16px; background: var(--card); }
+table.codebook th, table.codebook td { border: 1px solid var(--line); padding: 10px 12px; text-align: left; vertical-align: top; }
+table.codebook th { font-family: "Source Sans 3", sans-serif; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; background: #efebe1; }
 .interdit { margin: 20px 0; padding: 16px 18px; border: 1px solid var(--line); background: var(--card); }
 .interdit h2 { margin-top: 0; }
 .empty { color: var(--muted); font-style: italic; padding: 12px 0; }

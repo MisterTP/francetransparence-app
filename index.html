@@ -6,13 +6,14 @@
   <title>France Transparence — un vote recollé au tract</title>
   <meta name="description" content="Lire un scrutin de l’Assemblée ou du Sénat à côté d’une promesse datée. Pas un score.">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
-  <link rel="stylesheet" href="css/app.css?v=20260921f">
+  <link rel="stylesheet" href="css/app.css?v=20260921g">
 </head>
 <body>
+  <div class="stick">
   <div class="banner">
     <div class="wrap">
-      <strong>Démo</strong>
-      <span id="banner-count">10 fiches</span>
+      <strong>Corpus</strong>
+      <span id="banner-count">fiches</span>
       <span>— Ceci n’est pas un score. Aucun /100, aucun classement, aucune couleur morale.</span>
     </div>
   </div>
@@ -30,6 +31,7 @@
       </nav>
     </div>
   </header>
+  </div>
   <main>
     <div class="wrap">
       <h1 class="page">Promesse datée, scrutin public.</h1>
@@ -41,7 +43,7 @@
       <div class="search">
         <label for="q">Recherche circonscription, département, élu, thème</label>
         <input id="q" type="search" placeholder="ex. Landes, Var 7, Vallaud, immigration">
-        <p class="hint small">Démo : Landes 3e, Var 7e, Seine-Maritime 4e, Yvelines 12e, Haute-Loire (Sénat). Pas 577 fiches.</p>
+        <p class="hint small">Cinq circonscriptions : Landes 3e, Var 7e, Seine-Maritime 4e, Yvelines 12e, Haute-Loire (Sénat). Pas 577 fiches.</p>
       </div>
       <div class="filters" id="filters"></div>
       <div class="grid" id="liste"></div>
@@ -50,14 +52,13 @@
   <footer class="site">
     <div class="wrap">
       <span>Site statique · data/batch-1.json + batch-2.json + batch-3.json · Pages</span>
-      <span>Cadre institutionnel : <a href="https://www.constitu.fr/">Constitu’</a> · pas francetransparence.fr · pas leurs-votes.fr</span>
+      <span>Cadre institutionnel : <a href="https://www.constitu.fr/">Constitu’</a></span>
     </div>
   </footer>
-  <script src="js/app.js?v=20260921f"></script>
+  <script src="js/app.js?v=20260921g"></script>
   <script>
     const THEMES = ["Tous", "Social", "Santé", "Climat", "Énergie", "Budget", "Immigration", "Sécurité", "Europe", "Agriculture", "Institutions"];
-    let DATA = null;
-    let theme = "Tous";
+    let DATA = null, theme = "Tous";
     function render() {
       const q = FT.normalize(document.getElementById("q").value);
       const box = document.getElementById("liste");
@@ -66,29 +67,14 @@
         if (theme !== "Tous" && f.theme !== theme) return false;
         return FT.matchQuery(q, f, elu);
       });
-      if (!rows.length) {
-        box.innerHTML = "<p class='empty'>Aucune fiche pour cette recherche — le corpus est volontairement court.</p>";
-        return;
-      }
-      box.innerHTML = rows.map((f) => FT.cardHTML(f, FT.eluById(DATA.elus, f.eluId))).join("");
+      box.innerHTML = rows.length ? rows.map((f) => FT.cardHTML(f, FT.eluById(DATA.elus, f.eluId))).join("") : "<p class='empty'>Aucune fiche pour cette recherche.</p>";
     }
     function renderFilters() {
       const el = document.getElementById("filters");
-      el.innerHTML = THEMES.map((t) =>
-        `<button type="button" data-theme="${t}" aria-pressed="${t === theme}">${t}</button>`
-      ).join("");
-      el.querySelectorAll("button").forEach((b) => {
-        b.addEventListener("click", () => { theme = b.dataset.theme; renderFilters(); render(); });
-      });
+      el.innerHTML = THEMES.map((t) => `<button type="button" data-theme="${t}" aria-pressed="${t === theme}">${t}</button>`).join("");
+      el.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => { theme = b.dataset.theme; renderFilters(); render(); }));
     }
-    FT.loadData().then((d) => {
-      DATA = d;
-      document.getElementById("banner-count").textContent = d.meta.nbFiches + " fiches";
-      renderFilters();
-      render();
-    }).catch(() => {
-      document.getElementById("liste").innerHTML = "<p class='empty'>Impossible de charger les fiches.</p>";
-    });
+    FT.loadData().then((d) => { DATA = d; document.getElementById("banner-count").textContent = d.meta.nbFiches + " fiches"; renderFilters(); render(); });
     document.getElementById("q").addEventListener("input", render);
   </script>
 </body>
