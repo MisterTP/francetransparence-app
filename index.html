@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>France Transparence — un vote recollé au tract</title>
-  <meta name="description" content="Lire un scrutin de l’Assemblée ou du Sénat à côté d’une promesse datée. Pas un score.">
+  <meta name="description" content="Lire un scrutin à côté d’une promesse datée. Pas un score.">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
-  <link rel="stylesheet" href="css/app.css?v=20260921g">
+  <link rel="stylesheet" href="css/app.css?v=20260921h">
 </head>
 <body>
   <div class="stick">
@@ -14,7 +14,7 @@
     <div class="wrap">
       <strong>Corpus</strong>
       <span id="banner-count">fiches</span>
-      <span>— Ceci n’est pas un score. Aucun /100, aucun classement, aucune couleur morale.</span>
+      <span>— Ceci n’est pas un score. 577 circonscriptions cherchables.</span>
     </div>
   </div>
   <header class="site">
@@ -35,39 +35,44 @@
   <main>
     <div class="wrap">
       <h1 class="page">Promesse datée, scrutin public.</h1>
-      <p class="lede">Chaque fiche pose un élu, un extrait de profession de foi ou de programme, un vote, et un statut relationnel : aligné, opposé ou incomparable. Rien d’autre.</p>
-      <div class="phrase">
-        Constitu’ explique la machine.<br>
-        <em>France Transparence.app explique un vote dans la machine, recollé au tract.</em>
-      </div>
+      <p class="lede">Chaque fiche pose un élu, un extrait de profession de foi, un vote, et un statut : aligné, opposé ou incomparable.</p>
       <div class="search">
         <label for="q">Recherche circonscription, département, élu, thème</label>
-        <input id="q" type="search" placeholder="ex. Landes, Var 7, Vallaud, immigration">
-        <p class="hint small">Cinq circonscriptions : Landes 3e, Var 7e, Seine-Maritime 4e, Yvelines 12e, Haute-Loire (Sénat). Pas 577 fiches.</p>
+        <input id="q" type="search" placeholder="ex. Nord, Paris 18, Vallaud, immigration">
+        <p class="hint small">Les 577 circonscriptions AN sont cherchables. Une fiche n’existe que si la légende a été écrite à la main.</p>
       </div>
       <div class="filters" id="filters"></div>
       <div class="grid" id="liste"></div>
+      <div id="elus-box"></div>
     </div>
   </main>
   <footer class="site">
     <div class="wrap">
-      <span>Site statique · data/batch-1.json + batch-2.json + batch-3.json · Pages</span>
-      <span>Cadre institutionnel : <a href="https://www.constitu.fr/">Constitu’</a></span>
+      <span>Identités : Datan / AN · Légendes : corpus maison</span>
+      <span><a href="https://www.constitu.fr/">Constitu’</a></span>
     </div>
   </footer>
-  <script src="js/app.js?v=20260921g"></script>
+  <script src="js/app.js?v=20260921h"></script>
   <script>
     const THEMES = ["Tous", "Social", "Santé", "Climat", "Énergie", "Budget", "Immigration", "Sécurité", "Europe", "Agriculture", "Institutions"];
     let DATA = null, theme = "Tous";
     function render() {
       const q = FT.normalize(document.getElementById("q").value);
       const box = document.getElementById("liste");
+      const ebox = document.getElementById("elus-box");
       const rows = DATA.fiches.filter((f) => {
         const elu = FT.eluById(DATA.elus, f.eluId);
         if (theme !== "Tous" && f.theme !== theme) return false;
         return FT.matchQuery(q, f, elu);
       });
-      box.innerHTML = rows.length ? rows.map((f) => FT.cardHTML(f, FT.eluById(DATA.elus, f.eluId))).join("") : "<p class='empty'>Aucune fiche pour cette recherche.</p>";
+      box.innerHTML = rows.length ? rows.map((f) => FT.cardHTML(f, FT.eluById(DATA.elus, f.eluId))).join("") : (q ? "<p class='empty'>Pas encore de fiche rédigée pour cette recherche.</p>" : "");
+      if (q.length >= 2) {
+        const countBy = {};
+        DATA.fiches.forEach((f) => { countBy[f.eluId] = (countBy[f.eluId] || 0) + 1; });
+        const elus = DATA.elus.filter((e) => FT.matchElu(q, e)).slice(0, 48);
+        ebox.innerHTML = "<h2 class='block' style='margin-top:28px'>Circonscriptions</h2><div class='grid'>" +
+          elus.map((e) => FT.eluCardHTML(e, countBy[e.id] || 0)).join("") + "</div>";
+      } else ebox.innerHTML = "";
     }
     function renderFilters() {
       const el = document.getElementById("filters");

@@ -5,96 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fiche — France Transparence.app</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
-  <link rel="stylesheet" href="css/app.css?v=20260921f">
+  <link rel="stylesheet" href="css/app.css?v=20260921h">
 </head>
 <body>
-  <div class="banner">
-    <div class="wrap">
-      <strong>Démo</strong>
-      <span>Une fiche n’est pas un bulletin de notes.</span>
-    </div>
-  </div>
+  <div class="stick">
+  <div class="banner"><div class="wrap"><strong>Corpus</strong><span>Une fiche n’est pas un bulletin de notes.</span></div></div>
   <header class="site">
     <div class="wrap">
-      <div class="brand">
-        <h1><a href="index.html">France Transparence.app</a></h1>
-        <p class="tag">Un vote dans la machine, recollé au tract.</p>
-      </div>
-      <nav class="site">
-        <a href="index.html">Fiches</a>
-        <a href="methode.html">Méthode</a>
-        <a href="sources.html">Sources</a>
-        <a href="reponse.html">Droit de réponse</a>
-      </nav>
+      <div class="brand"><h1><a href="index.html">France Transparence.app</a></h1><p class="tag">Un vote dans la machine, recollé au tract.</p></div>
+      <nav class="site"><a href="index.html">Fiches</a><a href="methode.html">Méthode</a><a href="sources.html">Sources</a><a href="reponse.html">Droit de réponse</a></nav>
     </div>
   </header>
-  <main>
-    <div class="wrap" id="root"><p class="empty">Chargement…</p></div>
-  </main>
-  <footer class="site">
-    <div class="wrap">
-      <a href="index.html">← Toutes les fiches</a>
-      <span>Statut relationnel, pas verdict.</span>
-    </div>
-  </footer>
-  <script src="js/app.js?v=20260921f"></script>
+  </div>
+  <main><div class="wrap" id="root"><p class="empty">Chargement…</p></div></main>
+  <footer class="site"><div class="wrap"><a href="index.html">← Toutes les fiches</a><span>Statut relationnel, pas verdict.</span></div></footer>
+  <script src="js/app.js?v=20260921h"></script>
   <script>
     const id = new URLSearchParams(location.search).get("id");
     FT.loadData().then(({ fiches, elus }) => {
       const fiche = fiches.find((f) => f.id === id);
       const root = document.getElementById("root");
-      if (!fiche) {
-        root.innerHTML = "<p class='empty'>Fiche introuvable.</p>";
-        return;
-      }
+      if (!fiche) { root.innerHTML = "<p class='empty'>Fiche introuvable.</p>"; return; }
       const elu = FT.eluById(elus, fiche.eluId);
       document.title = fiche.scrutin.intitule + " — France Transparence.app";
-      root.innerHTML = `
-        <article class="fiche">
-          <header>
-            <p class="small">${fiche.chambre} · ${fiche.theme} · ${FT.fmtDate(fiche.scrutin.date)}</p>
-            <h1 class="page">${fiche.scrutin.intitule}</h1>
-            <p class="lede">
-              <a href="elu.html?id=${elu.id}">${elu.nom}</a>
-              · ${elu.circonscription}
-              · ${elu.groupe}
-              · vote <strong>${FT.voteLabel(fiche.voteElu)}</strong>
-              · <span class="statut ${fiche.statut}">${FT.statutLabel(fiche.statut)}</span>
-            </p>
-          </header>
-          <div class="block">
-            <h2>Ce que le texte fait</h2>
-            <p>${fiche.ceQueLeTexteFait}</p>
-            <p class="small">${fiche.scrutin.type} · résultat : ${fiche.scrutin.resultat}</p>
-          </div>
-          <div class="cols">
-            <div class="block">
-              <h2>Vote de l’élu</h2>
-              <p>L’élu a voté <strong>${FT.voteLabel(fiche.voteElu)}</strong>.</p>
-              <p class="small"><a href="${fiche.scrutin.lienOfficiel}">Lien officiel / agrégateur</a>${fiche.scrutin.lienDatan ? ` · <a href="${fiche.scrutin.lienDatan}">Datan</a>` : ""}</p>
-            </div>
-            <div class="block">
-              <h2>Extrait de programme</h2>
-              <blockquote>${fiche.extraitPromesse.texte}</blockquote>
-              <p class="small">${fiche.extraitPromesse.source} · ${FT.fmtDate(fiche.extraitPromesse.date)}
-                · <a href="${fiche.extraitPromesse.url}">source</a></p>
-            </div>
-          </div>
-          <div class="block">
-            <h2>Statut</h2>
-            <p><span class="statut ${fiche.statut}">${FT.statutLabel(fiche.statut)}</span> — relation texte↔vote, pas une note.</p>
-          </div>
-          <div class="block limite">
-            <h2>Limite</h2>
-            <p>${fiche.limite}</p>
-          </div>
-          <div class="block">
-            <h2>Droit de réponse</h2>
-            <p>${fiche.droitReponse || "Aucun texte reçu à ce jour. L’élu peut écrire à côté, pas à la place. Voir la page Droit de réponse."}</p>
-          </div>
-          <p class="small">Fiche élu (mandat, circonscription, groupe) : cadre Constitu’ · <a href="${elu.constituLien}">constitu.fr/candidats</a></p>
-        </article>`;
+      root.innerHTML = `<article class="fiche">
+        <header>
+          <p class="small">${fiche.chambre} · ${fiche.theme} · ${FT.fmtDate(fiche.scrutin.date)}</p>
+          <h1 class="page">${fiche.scrutin.intitule}</h1>
+          <p class="lede"><a href="elu.html?id=${elu.id}">${elu.nom}</a> · ${elu.circonscription} · ${elu.groupe} · vote <strong>${FT.voteLabel(fiche.voteElu)}</strong> · <span class="statut ${fiche.statut}">${FT.statutLabel(fiche.statut)}</span></p>
+        </header>
+        <div class="block"><h2>Ce que le texte fait</h2><p>${fiche.ceQueLeTexteFait}</p><p class="small">${fiche.scrutin.type} · résultat : ${fiche.scrutin.resultat}</p></div>
+        <div class="cols">
+          <div class="block"><h2>Vote de l’élu</h2><p>L’élu a voté <strong>${FT.voteLabel(fiche.voteElu)}</strong>.</p><p class="small"><a href="${fiche.scrutin.lienOfficiel}">Lien officiel / agrégateur</a>${fiche.scrutin.lienDatan ? ` · <a href="${fiche.scrutin.lienDatan}">Datan</a>` : ""}</p></div>
+          <div class="block"><h2>Extrait de programme</h2><blockquote>${fiche.extraitPromesse.texte}</blockquote><p class="small">${fiche.extraitPromesse.source} · ${FT.fmtDate(fiche.extraitPromesse.date)} · <a href="${fiche.extraitPromesse.url}">source</a></p></div>
+        </div>
+        <div class="block"><h2>Statut</h2><p><span class="statut ${fiche.statut}">${FT.statutLabel(fiche.statut)}</span> — relation texte↔vote, pas une note.</p></div>
+        <div class="block limite"><h2>Limite</h2><p>${fiche.limite}</p></div>
+        <div class="block"><h2>Droit de réponse</h2><p>${fiche.droitReponse || "Aucun texte reçu à ce jour. L’élu peut écrire à côté, pas à la place."}</p></div>
+      </article>`;
     });
   </script>
-</body>
-</html>
+</body></html>

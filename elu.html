@@ -5,70 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Élu — France Transparence.app</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
-  <link rel="stylesheet" href="css/app.css?v=20260921f">
+  <link rel="stylesheet" href="css/app.css?v=20260921h">
 </head>
 <body>
-  <div class="banner">
-    <div class="wrap">
-      <strong>Démo</strong>
-      <span>Pas de moyenne, pas de fidélité agrégée.</span>
-    </div>
-  </div>
+  <div class="stick">
+  <div class="banner"><div class="wrap"><strong>Corpus</strong><span>Pas de moyenne, pas de fidélité agrégée.</span></div></div>
   <header class="site">
     <div class="wrap">
-      <div class="brand">
-        <h1><a href="index.html">France Transparence.app</a></h1>
-        <p class="tag">Un vote dans la machine, recollé au tract.</p>
-      </div>
-      <nav class="site">
-        <a href="index.html">Fiches</a>
-        <a href="methode.html">Méthode</a>
-        <a href="sources.html">Sources</a>
-        <a href="reponse.html">Droit de réponse</a>
-      </nav>
+      <div class="brand"><h1><a href="index.html">France Transparence.app</a></h1><p class="tag">Un vote dans la machine, recollé au tract.</p></div>
+      <nav class="site"><a href="index.html">Fiches</a><a href="methode.html">Méthode</a><a href="sources.html">Sources</a><a href="reponse.html">Droit de réponse</a></nav>
     </div>
   </header>
-  <main>
-    <div class="wrap" id="root"><p class="empty">Chargement…</p></div>
-  </main>
-  <footer class="site">
-    <div class="wrap">
-      <a href="index.html">← Toutes les fiches</a>
-      <span>Identité, mandat, circonscription, groupe — sans note.</span>
-    </div>
-  </footer>
-  <script src="js/app.js?v=20260921f"></script>
+  </div>
+  <main><div class="wrap" id="root"><p class="empty">Chargement…</p></div></main>
+  <footer class="site"><div class="wrap"><a href="index.html">← Toutes les fiches</a><span>Identité sans note.</span></div></footer>
+  <script src="js/app.js?v=20260921h"></script>
   <script>
     const id = new URLSearchParams(location.search).get("id");
     FT.loadData().then(({ fiches, elus }) => {
       const elu = elus.find((e) => e.id === id);
       const root = document.getElementById("root");
-      if (!elu) {
-        root.innerHTML = "<p class='empty'>Élu introuvable dans la démo.</p>";
-        return;
-      }
+      if (!elu) { root.innerHTML = "<p class='empty'>Élu introuvable.</p>"; return; }
       const propres = fiches.filter((f) => f.eluId === elu.id);
       document.title = elu.nom + " — France Transparence.app";
       root.innerHTML = `
         <h1 class="page">${elu.nom}</h1>
-        <p class="lede">${elu.mandat} · ${elu.circonscription} · ${elu.groupe}</p>
-        <div class="block">
-          <h2>Mandat</h2>
-          <p>${elu.chambre}. Élu(e) le ${FT.fmtDate(elu.eluLe)}. Nuance de campagne : ${elu.nuance}.</p>
-          <p class="small">${(elu.sourcesIdentite || []).map((u) => `<a href="${u}">source identité</a>`).join(" · ")}
-            · cadre : <a href="${elu.constituLien}">Constitu’</a></p>
+        <p class="lede">${elu.mandat || "Député"} · ${elu.circonscription} · ${elu.groupe}</p>
+        <div class="block"><h2>Mandat</h2>
+          <p>${elu.chambre}${elu.eluLe ? ". Élu(e) le " + FT.fmtDate(elu.eluLe) : ""}. ${elu.nuance || elu.groupe || ""}.</p>
+          <p class="small">${(elu.sourcesIdentite || []).map((u) => `<a href="${u}">source identité</a>`).join(" · ")} · cadre : <a href="${elu.constituLien}">Constitu’</a></p>
         </div>
-        <div class="block">
-          <h2>Texte de campagne utilisé</h2>
-          <p>${elu.professionFoi.titre} (${elu.professionFoi.date})</p>
-          <blockquote>${elu.professionFoi.extraitLong.replace(/\n/g, "<br>")}</blockquote>
-          <p class="small"><a href="${elu.professionFoi.url}">Ouvrir la source</a></p>
+        <div class="block"><h2>Texte de campagne utilisé</h2>
+          ${elu.professionFoi ? `<p>${elu.professionFoi.titre} (${elu.professionFoi.date})</p><blockquote>${elu.professionFoi.extraitLong.replace(/\n/g, "<br>")}</blockquote><p class="small"><a href="${elu.professionFoi.url}">Ouvrir la source</a></p>` : `<p>Identité sourcée (AN / Datan). Profession de foi non extraite ici — pas de légende tant que l’extrait n’est pas écrit à la main.</p>`}
         </div>
         <h2>Fiches de cet élu</h2>
-        <p class="small">Liste plate. Pas de total.</p>
-        <div class="grid">${propres.map((f) => FT.cardHTML(f, elu)).join("")}</div>
-      `;
+        <p class="small">Liste plate. Pas de total.${propres.length ? "" : " Aucune fiche rédigée pour le moment."}</p>
+        <div class="grid">${propres.map((f) => FT.cardHTML(f, elu)).join("")}</div>`;
     });
   </script>
-</body>
-</html>
+</body></html>
