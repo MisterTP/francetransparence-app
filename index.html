@@ -49,11 +49,11 @@
   </main>
   <footer class="site">
     <div class="wrap">
-      <span>Site statique · data/fiches.json · hébergement Pages</span>
+      <span>Site statique · data/batch-1.json + batch-2.json · Pages</span>
       <span>Cadre institutionnel : <a href="https://www.constitu.fr/">Constitu’</a> · pas francetransparence.fr · pas leurs-votes.fr</span>
     </div>
   </footer>
-  <script src="js/app.js?v=20260921a"></script>
+  <script src="js/app.js?v=20260921b"></script>
   <script>
     const THEMES = ["Tous", "Social", "Santé", "Climat", "Énergie", "Budget", "Immigration", "Sécurité", "Europe", "Agriculture", "Institutions"];
     let DATA = null;
@@ -87,7 +87,7 @@
       renderFilters();
       render();
     }).catch(() => {
-      document.getElementById("liste").innerHTML = "<p class='empty'>Impossible de charger data/fiches.json.</p>";
+      document.getElementById("liste").innerHTML = "<p class='empty'>Impossible de charger les fiches.</p>";
     });
     document.getElementById("q").addEventListener("input", render);
   </script>

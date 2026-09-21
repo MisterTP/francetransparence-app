@@ -1,21 +1,25 @@
 async function loadData() {
-  const [fichesRes, elusRes, extraRes] = await Promise.all([
-    fetch("data/fiches.json?v=20260921a"),
-    fetch("data/elus.json?v=20260921a"),
-    fetch("data/olive.json?v=20260921a")
+  const v = "20260921b";
+  const [b1Res, b2Res, elusRes] = await Promise.all([
+    fetch("data/batch-1.json?v=" + v),
+    fetch("data/batch-2.json?v=" + v),
+    fetch("data/elus.json?v=" + v)
   ]);
-  let fichesJson = await fichesRes.json();
-  if (!fichesJson.fiches || fichesJson.fiches.length === 0) {
-    const fb = await fetch("https://raw.githubusercontent.com/MisterTP/francetransparence-app/d36eded0873e4b34bb24446589f770a80af8fd8b/data/fiches.json");
-    fichesJson = await fb.json();
+  if (!b1Res.ok || !b2Res.ok || !elusRes.ok) {
+    throw new Error("données");
   }
-  const extraJson = extraRes.ok ? await extraRes.json() : { fiches: [] };
-  const extraIds = new Set((extraJson.fiches || []).map((f) => f.id));
-  const base = (fichesJson.fiches || []).filter((f) => !extraIds.has(f.id));
-  const fiches = base.concat(extraJson.fiches || []);
+  const b1 = await b1Res.json();
+  const b2 = await b2Res.json();
   const elusJson = await elusRes.json();
+  const seen = new Set();
+  const fiches = [];
+  for (const f of [...(b1.fiches || []), ...(b2.fiches || [])]) {
+    if (!f.id || seen.has(f.id)) continue;
+    seen.add(f.id);
+    fiches.push(f);
+  }
   return {
-    meta: { ...fichesJson.meta, nbFiches: fiches.length, version: "0.3-demo" },
+    meta: { version: "0.4-demo", date: "2026-09-21", nbFiches: fiches.length },
     fiches,
     elus: elusJson.elus
   };
