@@ -1,6 +1,6 @@
 async function loadData() {
-  const v = "20261009e";
-  const names = ["batch-1","batch-2","batch-3","batch-4","batch-5","batch-6"];
+  const v = "20261009f";
+  const names = ["batch-1","batch-2","batch-3","batch-4","batch-5","batch-6","batch-7"];
   const [bRes, elusRes, peRes, circoRes] = await Promise.all([
     Promise.all(names.map((n) => fetch("data/" + n + ".json?v=" + v))),
     fetch("data/elus.json?v=" + v),
@@ -14,7 +14,7 @@ async function loadData() {
   const circos = circoRes.ok ? parseCircos(await circoRes.text()) : [];
   const seen = new Set(); const fiches = [];
   for (const b of batches) for (const f of (b.fiches || [])) { if (!f.id || seen.has(f.id)) continue; seen.add(f.id); fiches.push(f); }
-  return { meta: { version: "0.8", date: "2026-10-09", nbFiches: fiches.length }, fiches, elus: mergeElus(circos, [...(elusJson.elus || []), ...(peJson.elus || [])]) };
+  return { meta: { version: "0.9", date: "2026-10-09", nbFiches: fiches.length }, fiches, elus: mergeElus(circos, [...(elusJson.elus || []), ...(peJson.elus || [])]) };
 }
 function parseCircos(text) {
   const lines = text.trim().split(/\n/); const head = lines.shift().split(","); const i = (k) => head.indexOf(k);
