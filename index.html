@@ -4,59 +4,30 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>France Transparence — un vote recollé au tract</title>
-  <meta name="description" content="Lire un scrutin à côté d’une promesse datée. Pas un score.">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600;700&display=swap">
-  <link rel="stylesheet" href="css/app.css?v=20261009a">
+  <link rel="stylesheet" href="css/app.css?v=20261009b">
 </head>
 <body>
   <div class="stick">
-  <div class="banner">
-    <div class="wrap">
-      <strong>Corpus</strong>
-      <span id="banner-count">fiches</span>
-      <span>— Ceci n’est pas un score. Aucun /100, aucun classement.</span>
-    </div>
+  <div class="banner"><div class="wrap"><strong>Corpus</strong><span id="banner-count">fiches</span><span>— Ceci n’est pas un score. Aucun /100, aucun classement.</span></div></div>
+  <header class="site"><div class="wrap"><div class="brand"><h1><a href="index.html">France Transparence.app</a></h1><p class="tag">Un vote dans la machine, recollé au tract.</p></div><nav class="site"><a href="index.html" aria-current="page">Fiches</a><a href="methode.html">Méthode</a><a href="sources.html">Sources</a><a href="reponse.html">Droit de réponse</a></nav></div></header>
   </div>
-  <header class="site">
-    <div class="wrap">
-      <div class="brand">
-        <h1><a href="index.html">France Transparence.app</a></h1>
-        <p class="tag">Un vote dans la machine, recollé au tract.</p>
-      </div>
-      <nav class="site">
-        <a href="index.html" aria-current="page">Fiches</a>
-        <a href="methode.html">Méthode</a>
-        <a href="sources.html">Sources</a>
-        <a href="reponse.html">Droit de réponse</a>
-      </nav>
+  <main><div class="wrap">
+    <h1 class="page">Promesse datée, scrutin public.</h1>
+    <p class="lede">Chaque fiche pose un élu, un extrait de profession de foi ou de programme de liste, un vote, et un statut : aligné, opposé ou incomparable.</p>
+    <div class="search">
+      <label for="q">Recherche circonscription, département, élu, thème</label>
+      <input id="q" type="search" placeholder="ex. Nord, Hayer, Ukraine, immigration">
+      <label for="dep" style="margin-top:12px">Ou choisir un département</label>
+      <select id="dep" style="width:100%;font:inherit;font-size:18px;padding:10px 12px;border:1px solid #d4cebf;background:#fff;color:#16140f"><option value="">Tous les départements</option></select>
+      <p class="hint small" id="hint">Les 577 circonscriptions AN sont listées dès qu’un département est choisi.</p>
     </div>
-  </header>
-  </div>
-  <main>
-    <div class="wrap">
-      <h1 class="page">Promesse datée, scrutin public.</h1>
-      <p class="lede">Chaque fiche pose un élu, un extrait de profession de foi, un vote, et un statut : aligné, opposé ou incomparable.</p>
-      <div class="search">
-        <label for="q">Recherche circonscription, département, élu, thème</label>
-        <input id="q" type="search" placeholder="ex. Nord, Paris, Vallaud, immigration">
-        <label for="dep" style="margin-top:12px">Ou choisir un département</label>
-        <select id="dep" style="width:100%;font:inherit;font-size:18px;padding:10px 12px;border:1px solid #d4cebf;background:#fff;color:#16140f">
-          <option value="">Tous les départements</option>
-        </select>
-        <p class="hint small" id="hint">Les 577 circonscriptions AN sont listées dès qu’un département est choisi. Une fiche n’existe que si la légende a été écrite à la main.</p>
-      </div>
-      <div class="filters" id="filters"></div>
-      <div class="grid" id="liste"></div>
-      <div id="elus-box"></div>
-    </div>
-  </main>
-  <footer class="site">
-    <div class="wrap">
-      <span>Identités : Datan / AN · Légendes : corpus maison</span>
-      <span><a href="https://www.constitu.fr/">Constitu’</a></span>
-    </div>
-  </footer>
-  <script src="js/app.js?v=20261009a"></script>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="liste"></div>
+    <div id="elus-box"></div>
+  </div></main>
+  <footer class="site"><div class="wrap"><span>Identités : Datan / AN · Légendes : corpus maison</span><span><a href="https://www.constitu.fr/">Constitu’</a></span></div></footer>
+  <script src="js/app.js?v=20261009b"></script>
   <script>
     const THEMES = ["Tous", "Social", "Santé", "Climat", "Énergie", "Budget", "Immigration", "Sécurité", "Europe", "Agriculture", "Institutions"];
     let DATA = null, theme = "Tous";
@@ -71,20 +42,14 @@
         if (dep && elu && elu.departement !== dep) return false;
         return FT.matchQuery(q, f, elu);
       });
-      box.innerHTML = rows.length
-        ? rows.map((f) => FT.cardHTML(f, FT.eluById(DATA.elus, f.eluId))).join("")
-        : ((q || dep) ? "<p class='empty'>Pas encore de fiche rédigée pour cette recherche.</p>" : "");
-      const showElus = q.length >= 2 || dep;
-      if (showElus) {
+      box.innerHTML = rows.length ? rows.map((f) => FT.cardHTML(f, FT.eluById(DATA.elus, f.eluId))).join("") : ((q || dep) ? "<p class='empty'>Pas encore de fiche rédigée pour cette recherche.</p>" : "");
+      if (q.length >= 2 || dep) {
         const countBy = {};
         DATA.fiches.forEach((f) => { countBy[f.eluId] = (countBy[f.eluId] || 0) + 1; });
         let elus = DATA.elus.filter((e) => (!dep || e.departement === dep) && (!q || FT.matchElu(q, e)));
         elus.sort((a, b) => (a.circoNum || 0) - (b.circoNum || 0) || a.nom.localeCompare(b.nom, "fr"));
         const shown = elus.slice(0, 80);
-        ebox.innerHTML = "<h2 class='block' style='margin-top:28px'>Circonscriptions" +
-          (dep ? " — " + dep : "") + " · " + elus.length + "</h2><div class='grid'>" +
-          shown.map((e) => FT.eluCardHTML(e, countBy[e.id] || 0)).join("") + "</div>" +
-          (elus.length > shown.length ? "<p class='small'>Affichage limité à 80. Affine la recherche.</p>" : "");
+        ebox.innerHTML = "<h2 class='block' style='margin-top:28px'>Circonscriptions" + (dep ? " — " + dep : "") + " · " + elus.length + "</h2><div class='grid'>" + shown.map((e) => FT.eluCardHTML(e, countBy[e.id] || 0)).join("") + "</div>";
       } else ebox.innerHTML = "";
     }
     function renderFilters() {
@@ -94,25 +59,16 @@
     }
     function fillDeps() {
       const sel = document.getElementById("dep");
-      const deps = [...new Set(DATA.elus.map((e) => e.departement).filter(Boolean))].sort((a, b) => a.localeCompare(b, "fr"));
-      sel.innerHTML = "<option value=''>Tous les départements</option>" +
-        deps.map((d) => `<option value="${d.replace(/"/g, "")}">${d}</option>`).join("");
+      const deps = [...new Set(DATA.elus.map((e) => e.departement).filter((d) => d && d !== "France"))].sort((a, b) => a.localeCompare(b, "fr"));
+      sel.innerHTML = "<option value=''>Tous les départements</option>" + deps.map((d) => `<option value="${d}">${d}</option>`).join("");
     }
     FT.loadData().then((d) => {
       DATA = d;
       const nDep = DATA.elus.filter((e) => e.chambre === "Assemblée nationale").length;
       document.getElementById("banner-count").textContent = d.meta.nbFiches + " fiches · " + nDep + " députés";
-      document.getElementById("hint").textContent = nDep
-        ? (nDep + " députés chargés. Choisis un département pour voir ses circonscriptions. Une fiche n’existe que si la légende a été écrite à la main.")
-        : "Liste des députés indisponible (Datan). Les fiches maison restent lisibles.";
-      fillDeps();
-      renderFilters();
-      render();
-    }).catch(() => {
-      document.getElementById("liste").innerHTML = "<p class='empty'>Impossible de charger les fiches.</p>";
+      fillDeps(); renderFilters(); render();
     });
     document.getElementById("q").addEventListener("input", render);
     document.getElementById("dep").addEventListener("change", render);
   </script>
-</body>
-</html>
+</body></html>
