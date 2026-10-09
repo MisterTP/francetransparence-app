@@ -1,26 +1,28 @@
 async function loadData() {
-  const v = "20260921h";
-  const [b1Res, b2Res, b3Res, elusRes, circoRes] = await Promise.all([
+  const v = "20261009b";
+  const [b1Res, b2Res, b3Res, b4Res, elusRes, circoRes] = await Promise.all([
     fetch("data/batch-1.json?v=" + v),
     fetch("data/batch-2.json?v=" + v),
     fetch("data/batch-3.json?v=" + v),
+    fetch("data/batch-4.json?v=" + v),
     fetch("data/elus.json?v=" + v),
     fetch("https://www.data.gouv.fr/api/1/datasets/r/092bd7bb-1543-405b-b53c-932ebb49bb8e")
   ]);
-  if (!b1Res.ok || !b2Res.ok || !b3Res.ok || !elusRes.ok) throw new Error("données");
+  if (!b1Res.ok || !b2Res.ok || !b3Res.ok || !b4Res.ok || !elusRes.ok) throw new Error("données");
   const b1 = await b1Res.json();
   const b2 = await b2Res.json();
   const b3 = await b3Res.json();
+  const b4 = await b4Res.json();
   const elusJson = await elusRes.json();
   const circos = circoRes.ok ? parseCircos(await circoRes.text()) : [];
   const seen = new Set();
   const fiches = [];
-  for (const f of [...(b1.fiches || []), ...(b2.fiches || []), ...(b3.fiches || [])]) {
+  for (const f of [...(b1.fiches || []), ...(b2.fiches || []), ...(b3.fiches || []), ...(b4.fiches || [])]) {
     if (!f.id || seen.has(f.id)) continue;
     seen.add(f.id);
     fiches.push(f);
   }
-  return { meta: { version: "0.5", date: "2026-09-21", nbFiches: fiches.length }, fiches, elus: mergeElus(circos, elusJson.elus || []) };
+  return { meta: { version: "0.6", date: "2026-10-09", nbFiches: fiches.length }, fiches, elus: mergeElus(circos, elusJson.elus || []) };
 }
 function parseCircos(text) {
   const lines = text.trim().split(/\n/);
